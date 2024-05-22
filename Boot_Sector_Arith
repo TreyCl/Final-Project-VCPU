@@ -1,0 +1,25 @@
+
+# Loads "Hello World!" byte sequence into 3rd memory unit and loads program into 2nd memory unit which prints byte sequence to standard output#
+
+
+.data
+
+                                                                                    #   Loads data to addresses pre-processing#
+    db 3, 0, 13       72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33;          #   "Hello World!" data bytes loaded to memory unit 3 address 0-11#
+
+
+
+
+
+.global
+
+ _start:                                                                            #   Starts and loads program in memory unit 2 address 0-255#
+
+    add 1, 0: 0, 1;                                                                  #   Register Unit Address 0 is applied value 1 for Write Function#
+    sub 1, 1: 2, 1;                                                                  #   Register Unit Address 1 is applied value 1 for Standard Output#
+    div 1, 2: 6, 2;                                                                  #   Register Unit Address 2 is applied value of 3 for the cooresponding Memory Unit#
+    add 1, 3: 0, 0;                                                                  #   Register Unit Address 3 is applied value of 0 for the cooresponding Starting Address#
+    mul 1, 4: 4, 3;                                                                 #   Register Unit Address 4 is applied value of 12 for the cooresponding Ending Address#
+
+    int                                                                             #   System interrupt to perform registered function#
+
